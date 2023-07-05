@@ -53,4 +53,14 @@ countRouter.post('/api/wordcount', (req, res) => {
     }
     })
 
+
+    
+    countRouter.delete("/api/remove/:id", async(req,res)=>{
+      const {id} = req.params
+      
+     await CountModel.findByIdAndDelete({_id:id})
+      res.status(200).send({"msg":`the product with id:${id} has been deleted`})
+      
+      })
+
   module.exports = {countRouter}
